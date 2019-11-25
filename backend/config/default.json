@@ -1,0 +1,10 @@
+{
+  "DB": {
+    "HOST": "localhost",
+    "PORT": 5432,
+    "USERNAME": "postgres",
+    "PASSWORD": "postgres",
+    "TYPE": "postgres",
+    "DATABASE": "shisyr_m_db"
+  }
+}

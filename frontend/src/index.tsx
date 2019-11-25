@@ -1,17 +1,24 @@
-import * as React from "react";
-import * as ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import {App} from "./App";
-import rootReducer from './reducers';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import * as mobx from 'mobx'
+import App from './App'
+import {Assembler, Container, ResolverProvider} from 'type-injector'
+import ASSEMBLIES from './assemblies'
+import {Resolver} from 'type-injector'
+import './index.scss'
+import './i18n'
 
-const initialStore = {};
+mobx.configure({enforceActions: 'observed'})
 
-const store = createStore(rootReducer, initialStore);
+const assembler = new Assembler(ASSEMBLIES, Container.defaultContainer)
 
-ReactDOM.render(
-    <Provider store={store}>
+assembler
+  .assemble()
+  .then((resolver: Resolver) => ReactDOM.render(
+    (
+      <ResolverProvider resolver={resolver}>
         <App/>
-    </Provider>,
+      </ResolverProvider>
+    ),
     document.getElementById('root')
-);
+  ))

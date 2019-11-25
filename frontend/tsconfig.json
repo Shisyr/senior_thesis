@@ -1,23 +1,62 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "module": "commonjs",
-    "target": "es6",
-    "lib": [
-      "es2015",
-      "es2017",
-      "dom"
-    ],
-    "removeComments": true,
-    "allowSyntheticDefaultImports": false,
-    "jsx": "react",
-    "allowJs": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "components/*": [
-        "src/components/*"
-      ]
-    }
-  }
+      "@App/*": ["./*"],
+      "@Scenes/*": ["./kit/scenes/*"],
+      "@Components/*": ["./kit/components/*"],
+      "@Modules/*": ["./kit/modules/*"],
+      "@Services": ["./model/services/index"],
+      "@Mappers": ["./model/mappers/index"],
+      "@Storages": ["./model/storages/index"],
+      "@Entities/*": ["./entities/*"],
+      "@Const/*": ["./const/*"],
+      "@Types": ["./common/types"]
+    },
+    "outDir": "build",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "es6",
+      "es7",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
+    "rootDirs": [
+      "./src"
+    ],
+    "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": false,
+    "typeRoots": [
+      "node_modules/@types",
+      "src/common/types"
+    ],
+    "strict": true,
+    "locale": "ru",
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "webpack.**",
+    "jest.**",
+    "./src/__mocks__/",
+    "./coverage/",
+    "./**/*.test.ts",
+    "./**/*.test.tsx",
+    "./**/*.spec.ts",
+    "./**/*.spec.tsx"
+  ]
 }
